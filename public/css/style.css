@@ -6,11 +6,19 @@ body {
     font-family: 'Varela Round', sans-serif;
     margin: 0;
     padding: 0;
+    
+    /* Flexbox Layout */
     display: flex;
     justify-content: center;
-    align-items: center;
+    
+    /* CHANGE: Removed 'align-items: center' to prevent top-clipping when content grows */
+    /* align-items: center; */ 
+    
     min-height: 100vh;
-    overflow: hidden;
+    
+    /* CHANGE: Enabled vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto;   /* Allow vertical scroll */
 }
 
 @keyframes gradientBG {
@@ -30,6 +38,10 @@ body {
     width: 90%;
     z-index: 10;
     transition: transform 0.3s ease;
+    
+    /* CHANGE: This safely centers the card vertically and horizontally, 
+       but lets it scroll if it gets too tall. */
+    margin: auto; 
 }
 
 .container:hover {
@@ -38,10 +50,9 @@ body {
 
 /* --- Typography --- */
 h1 {
-    /* CHANGE: New Font */
     font-family: 'Indie Flower', cursive;
     font-size: 3.5rem;
-    font-weight: bold; /* Added bold for better visibility */
+    font-weight: bold;
     color: #ff4d6d;
     margin: 20px 0;
     line-height: 1.2;
@@ -114,7 +125,6 @@ button:active {
 }
 
 #success-message {
-    /* CHANGE: New Font */
     font-family: 'Indie Flower', cursive;
     font-size: 3rem;
     font-weight: bold;
