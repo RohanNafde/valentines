@@ -68,13 +68,26 @@ yes_button.addEventListener('click', () => {
     let buttons = document.getElementsByClassName('buttons')[0];
     buttons.style.display = "none";
 
-    // --- NEW: Hide the question heading ---
+    // Hide the question heading
     let heading = document.getElementById('question-heading');
     heading.style.display = "none";
     
     // Show message div
     let message = document.getElementsByClassName('message')[0];
     message.style.display = "block";
+});
+
+// --- NEW LOGIC FOR OPEN LETTER BUTTON ---
+const openLetterBtn = document.getElementById('open-letter-btn');
+
+openLetterBtn.addEventListener('click', () => {
+    // Hide the success message
+    let message = document.getElementsByClassName('message')[0];
+    message.style.display = "none";
+
+    // Show the letter container
+    let letterContainer = document.getElementsByClassName('letter-container')[0];
+    letterContainer.style.display = "block";
 });
 
 function refreshBanner() {
