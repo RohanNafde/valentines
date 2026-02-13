@@ -24,15 +24,13 @@ let btnHeight = 50;
 let clicks = 0;
 
 no_button.addEventListener('click', () => {
-    // Change banner source
     let banner = document.getElementById('banner');
     if (clicks === 0) {
-        banner.src = "public/images/no.png";
+        banner.src = "../images/no.png";
         refreshBanner();
     }
     clicks++;
 
-    // Increase button height and width by 30px
     btnWidth += 30;
     btnHeight += 30;
     yes_button.style.width = `${btnWidth}px`;
@@ -40,7 +38,6 @@ no_button.addEventListener('click', () => {
     
     let total = answers_no.length;
 
-    // Change button text
     if (i < total - 1) {
         no_button.innerHTML = answers_no[i];
         i++;
@@ -50,7 +47,6 @@ no_button.addEventListener('click', () => {
         no_button.innerHTML = answers_no[0];
         yes_button.innerHTML = "Yes";
         
-        // Reset to the correct initial dimensions (80x50)
         yes_button.style.height = "50px";
         yes_button.style.width = "80px";
         btnWidth = 80;
@@ -59,39 +55,29 @@ no_button.addEventListener('click', () => {
 });
 
 yes_button.addEventListener('click', () => {
-    // Change banner gif path
     let banner = document.getElementById('banner');
-    banner.src = "public/images/yes.png";
+    banner.src = "../images/yes.png";
     refreshBanner();
     
-    // Hide buttons div
     let buttons = document.getElementsByClassName('buttons')[0];
     buttons.style.display = "none";
 
-    // Hide the question heading
     let heading = document.getElementById('question-heading');
     heading.style.display = "none";
     
-    // Show message div
     let message = document.getElementsByClassName('message')[0];
     message.style.display = "block";
 });
 
-// --- NEW LOGIC FOR OPEN LETTER BUTTON ---
-const openLetterBtn = document.getElementById('open-letter-btn');
-
-openLetterBtn.addEventListener('click', () => {
-    // Hide the success message
-    let message = document.getElementsByClassName('message')[0];
-    message.style.display = "none";
-
-    // Show the letter container
-    let letterContainer = document.getElementsByClassName('letter-container')[0];
-    letterContainer.style.display = "block";
-});
+// Redirect logic for the Riddle page
+const takeRiddleBtn = document.getElementById('take-riddle-btn');
+if (takeRiddleBtn) {
+    takeRiddleBtn.addEventListener('click', () => {
+        window.location.href = "riddle.html";
+    });
+}
 
 function refreshBanner() {
-    // Reload banner gif to force load  
     let banner = document.getElementById('banner');
     let src = banner.src;
     banner.src = '';
