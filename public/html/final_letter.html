@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="bg-hearts"></div>
+
     <div class="container">
         <h1>You Got It!</h1>
         <p style="font-family: 'Varela Round', sans-serif; margin-bottom: 30px; color: #666;">
@@ -15,20 +17,24 @@
         </p>
 
         <div style="margin-bottom: 20px;">
-            <a href="../files/final_letter.pdf" download="My_Letter.pdf" class="btn-pdf">
+            <a href="../files/letter.pdf" download="My_Letter.pdf" class="btn-pdf">
                 Download Letter
             </a>
         </div>
 
-        <div style="margin-bottom: 20px;">
-            <a href="../files/message.mp3" download="Voice_Message.mp3" class="btn-pdf" style="background-color: #9b59b6;">
-                Download Audio Message
-            </a>
+        <div style="margin-bottom: 20px; text-align: left; background: #fff0f3; padding: 20px; border-radius: 15px;">
+            <p style="margin: 0 0 10px 0; color: #ff4d6d; font-weight: bold;">Listen to the song:</p>
+            <audio controls style="width: 100%; border-radius: 20px;">
+                <source src="../files/song.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
         </div>
 
         <div style="margin-top: 40px;">
             <a href="index.html" style="text-decoration: none; color: #ff4d6d; font-family: 'Varela Round', sans-serif;">Return Home</a>
         </div>
     </div>
+    
+    <script src="../js/script.js"></script>
 </body>
 </html>

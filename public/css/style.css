@@ -11,6 +11,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
+    position: relative;
 }
 
 @keyframes gradientBG {
@@ -21,14 +22,18 @@ body {
 
 /* --- The Card Container --- */
 .container {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 40px;
     border-radius: 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 600px;
     width: 90%;
-    z-index: 10;
+    
+    /* Ensure container stays above the background hearts */
+    position: relative; 
+    z-index: 10; 
+    
     transition: transform 0.3s ease;
     margin: auto; 
     margin-top: 50px;
@@ -41,10 +46,9 @@ body {
 
 /* --- Typography --- */
 h1 {
-    /* CHANGED: New Beautiful Font */
     font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
-    font-weight: 700; /* Made it bold for impact */
+    font-weight: 700;
     color: #ff4d6d;
     margin: 20px 0;
     line-height: 1.2;
@@ -131,7 +135,6 @@ button:active, .btn-pdf:active {
 }
 
 #success-message {
-    /* CHANGED: New Beautiful Font */
     font-family: 'Playfair Display', serif;
     font-size: 3rem;
     font-weight: 700;
@@ -178,4 +181,70 @@ button:active, .btn-pdf:active {
         font-size: 1rem;
         padding: 10px 20px;
     }
+}
+
+/* --- FLOATING HEARTS (FIXED) --- */
+.bg-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1; 
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -10px;
+    
+    /* CHANGED: Deep Raspberry/Red color with high opacity */
+    background-color: rgba(214, 51, 132, 0.85); 
+    
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin: 0 10px;
+    transform: rotate(-45deg);
+    animation: float 10s ease-in infinite;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    position: absolute;
+    background-color: inherit;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.heart:before { top: -10px; left: 0; }
+.heart:after { left: 10px; top: 0; }
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(-45deg) scale(0.8); opacity: 0; }
+    20% { opacity: 1; /* Fully visible during float */ } 
+    100% { transform: translateY(-100vh) rotate(-45deg) scale(1.2); opacity: 0; }
+}
+
+/* --- Shake Animation for Wrong Answers --- */
+.shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* Audio Player */
+audio {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }

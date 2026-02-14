@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="bg-hearts"></div>
+
     <div class="container">
         <h1>The Riddle</h1>
         
@@ -23,7 +25,7 @@
         </p>
 
         <div style="margin-bottom: 30px;">
-            <a href="../files/letter.pdf" download="Valentine_Riddle.pdf" class="btn-pdf">
+            <a href="../files/riddle.pdf" download="Valentine_Riddle.pdf" class="btn-pdf">
                 Download Riddle
             </a>
         </div>
@@ -43,24 +45,29 @@
         </div>
     </div>
 
+    <script src="../js/script.js"></script>
+
     <script>
         const submitBtn = document.getElementById('submit-answer');
         const answerInput = document.getElementById('riddle-answer');
         const errorMsg = document.getElementById('error-message');
 
         submitBtn.addEventListener('click', () => {
-            if (parseInt(answerInput.value) === 6) {
-                // Stays the same as they are siblings
+            if (parseInt(answerInput.value) === 394) {
                 window.location.href = "final_letter.html";
             } else {
-                // Show error message within the page
                 errorMsg.style.visibility = "visible";
-                // Optionally clear the input for another try
+                
+                // Shake animation
+                answerInput.classList.add('shake');
+                setTimeout(() => {
+                    answerInput.classList.remove('shake');
+                }, 500);
+
                 answerInput.value = "";
             }
         });
 
-        // Hide error message when the user starts typing again
         answerInput.addEventListener('input', () => {
             errorMsg.style.visibility = "hidden";
         });
