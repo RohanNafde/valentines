@@ -1,31 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    /* --- Floating Hearts Logic --- */
+    /* --- Floating Hearts Logic (unchanged) --- */
     function createHeart() {
         const heart = document.createElement('div');
         heart.classList.add('heart');
-        
-        // Random position and animation duration
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = Math.random() * 3 + 4 + "s"; // 4-7s
-        
-        // Random opacity to make them sparkle
+        heart.style.animationDuration = Math.random() * 3 + 4 + "s"; 
         heart.style.opacity = Math.random() * 0.5 + 0.3;
         
         const container = document.querySelector('.bg-hearts');
         if (container) {
             container.appendChild(heart);
-            
-            // Remove after animation to prevent memory leaks
             setTimeout(() => {
                 heart.remove();
             }, 8000); 
         }
     }
-    
-    // Start generating hearts immediately
     setInterval(createHeart, 400);
-
 
     /* --- Button Logic --- */
     const no_button = document.getElementById('no-button');
@@ -57,12 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
         no_button.addEventListener('click', () => {
             let banner = document.getElementById('banner');
             if (clicks === 0) {
-                banner.src = "../images/no.png";
+                // CHANGED: Path relative to root index.html
+                banner.src = "images/no.png";
                 refreshBanner();
             }
             clicks++;
 
-            // Cap the button size so it doesn't get too huge on mobile
             if (btnWidth < window.innerWidth - 60) {
                 btnWidth += 30;
                 btnHeight += 30;
@@ -76,17 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 no_button.innerHTML = answers_no[i];
                 i++;
             } else {
-                // Reset cleanly without alert
                 i = 1;
                 no_button.innerHTML = answers_no[0];
                 yes_button.innerHTML = "Yes";
-                
                 yes_button.style.height = "50px";
                 yes_button.style.width = "80px";
                 btnWidth = 80;
                 btnHeight = 50;
                 
-                banner.src = "../images/first.png";
+                // CHANGED: Path relative to root index.html
+                banner.src = "images/first.png";
                 refreshBanner();
                 clicks = 0;
             }
@@ -96,7 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yes_button) {
         yes_button.addEventListener('click', () => {
             let banner = document.getElementById('banner');
-            banner.src = "../images/yes.png";
+            // CHANGED: Path relative to root index.html
+            banner.src = "images/yes.png";
             refreshBanner();
             
             let buttons = document.getElementsByClassName('buttons')[0];
@@ -114,7 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const takeRiddleBtn = document.getElementById('take-riddle-btn');
     if (takeRiddleBtn) {
         takeRiddleBtn.addEventListener('click', () => {
-            window.location.href = "riddle.html";
+            // CHANGED: Since we are on root index.html, we need to go INTO public folder
+            window.location.href = "html/riddle.html";
         });
     }
 

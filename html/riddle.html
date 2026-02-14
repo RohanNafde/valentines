@@ -25,7 +25,7 @@
         </p>
 
         <div style="margin-bottom: 30px;">
-            <a href="../files/riddle.pdf" download="Valentine_Riddle.pdf" class="btn-pdf">
+            <a href="../files/letter.pdf" download="Valentine_Riddle.pdf" class="btn-pdf">
                 Download Riddle
             </a>
         </div>
@@ -41,7 +41,7 @@
         </p>
         
         <div style="margin-top: 10px;">
-            <a href="index.html" style="text-decoration: none; color: #ff4d6d; font-family: 'Varela Round', sans-serif;">← Go Back</a>
+            <a href="../index.html" style="text-decoration: none; color: #ff4d6d; font-family: 'Varela Round', sans-serif;">← Go Back</a>
         </div>
     </div>
 
@@ -54,16 +54,14 @@
 
         submitBtn.addEventListener('click', () => {
             if (parseInt(answerInput.value) === 394) {
+                // Siblings in the same folder, so this path is fine
                 window.location.href = "final_letter.html";
             } else {
                 errorMsg.style.visibility = "visible";
-                
-                // Shake animation
                 answerInput.classList.add('shake');
                 setTimeout(() => {
                     answerInput.classList.remove('shake');
                 }, 500);
-
                 answerInput.value = "";
             }
         });
